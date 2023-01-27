@@ -24,3 +24,22 @@ print(newstr[1:4])
 
 #will log the string in reverse
 print(newstr[::-1])
+
+#String concatentation
+name = 'Sam'
+
+last_letters = name[1:]
+
+pam = 'P' + last_letters
+print(pam)
+
+letter = 'z'
+print(letter * 10) #prints zzzzzzzzzz
+ 
+x = 'Hello World'
+
+x = x.upper() #toUpperCase()
+x = x.lower() #toLowerCase()
+
+x = 'Hi this is a string'
+x = x.split() #transforms to list. works the same as javascript
