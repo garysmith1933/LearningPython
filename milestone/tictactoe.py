@@ -4,11 +4,20 @@
 # and then place a symbol on the board
 
 #create board
+def display_board():
+  row1 = [7,8,9]
+  row2 = [4,5,6]
+  row3 = [1,2,3]
 
+  print(str(row1[0]) + '|' + str(row1[1]) + '|' + str(row1[2]))
+  print('------')
+  print(str(row2[0]) + '|' + str(row2[1]) + '|' + str(row2[2]))
+  print('------')
+  print(str(row3[0]) + '|' + str(row3[1]) + '|' + str(row3[2]))
 
-# choice X or O
+# choose X or O
 def start_game():
-  print("Welcome to Tic Tac Toe")
+  print("Welcome to Tic Tac Toe!")
 
   player1 = ''
   while player1 not in ['X', 'O']:
@@ -21,4 +30,6 @@ def start_game():
   
 player1 = start_game()
 player2 = 'X' if player1 == 'O' else 'O'
-print(f'player1: {player1} ', f'player2: {player2}')
+print(f'\nPlayer 1: {player1} ', f'Player 2: {player2}', '\n')
+
+display_board()
