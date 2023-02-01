@@ -21,9 +21,13 @@ class Dog(Animal):
   def who_am_i(self):
     print("Im a dog")
 
+  def bark(self):
+    print("WOOF!")
+
 mydog = Dog()
 mydog.eat()
 mydog.who_am_i() 
+mydog.bark()
 
 # the dog class now has all methods from the animal class
 # these methods can be over written by initalizing a method with the same name on the derive class
