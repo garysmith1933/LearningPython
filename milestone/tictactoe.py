@@ -4,16 +4,18 @@
 # and then place a symbol on the board
 
 #create board
-def display_board():
-  row1 = [7,8,9]
-  row2 = [4,5,6]
-  row3 = [1,2,3]
-
-  print(str(row1[0]) + '|' + str(row1[1]) + '|' + str(row1[2]))
+game_board = [
+  7,8,9,
+  4,5,6,
+  1,2,3
+]
+def display_board(game_board):
+  print('Here is the game board')
+  print(str(game_board[0]) + '|' + str(game_board[1]) + '|' + str(game_board[2]))
   print('------')
-  print(str(row2[0]) + '|' + str(row2[1]) + '|' + str(row2[2]))
+  print(str(game_board[3]) + '|' + str(game_board[4]) + '|' + str(game_board[5]))
   print('------')
-  print(str(row3[0]) + '|' + str(row3[1]) + '|' + str(row3[2]))
+  print(str(game_board[6]) + '|' + str(game_board[7]) + '|' + str(game_board[8]))
 
 # choose X or O
 def start_game():
@@ -31,5 +33,25 @@ def start_game():
 player1 = start_game()
 player2 = 'X' if player1 == 'O' else 'O'
 print(f'\nPlayer 1: {player1} ', f'Player 2: {player2}', '\n')
+display_board(game_board)
+winner = False
 
-display_board()
+
+def player_move(player, game_board):
+  choice = ''
+
+  while choice not in game_board:
+    choice = int(input("Player 1, choose a position 1 to 9: "))
+
+    if choice not in game_board:
+      print('Invalid position: Please choose from 1 to 9: ')
+
+  idx = game_board.index(choice)
+  game_board[idx] = player
+
+  display_board(game_board)
+  return game_board
+
+
+player_move(player1, game_board)
+player_move(player2, game_board)
