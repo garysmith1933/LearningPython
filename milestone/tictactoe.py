@@ -1,8 +1,3 @@
-# 2 players should be able to play (both sitting at same computer)
-# The board should be printed out everytime a player makes a move
-# You should be able to accept input of the player position 
-# and then place a symbol on the board
-
 #create board
 game_board = [
   1,2,3,
@@ -31,14 +26,7 @@ def start_game():
 
   return player1
   
-player1 = start_game()
-player2 = 'X' if player1 == 'O' else 'O'
-print(f'\nPlayer 1: {player1} ', f'Player 2: {player2}', '\n')
-display_board(game_board)
-winner = False
-
-
-def player_move(player, game_board):
+def player_move(player, game_board, taken_spaces):
   choice = ''
   current_player = 'Player 1' if player == 'X' else 'Player 2'
 
@@ -47,25 +35,32 @@ def player_move(player, game_board):
 
     if choice not in game_board:
       print('Invalid position: Please choose from 1 to 9: ')
-
+    
   idx = game_board.index(choice)
   game_board[idx] = player
+  taken_spaces.add(idx)
 
   display_board(game_board)
   return game_board
 
-def three_in_a_row(position, player, game_board, count=1):
+def three_in_a_row(position, player, game_board, count=0):
   # if the count is equal to 3, we have a winner, return true
+
   if count == 3: 
     return True
 
+  print(position, count)
+  if position - 1 not in range(0, len(game_board)):
+    return False
+
   # is it a valid position, ex: X or O
-  value = game_board[position]
-
+  value = game_board[position - 1]
+  print(f"The current value at {position - 1} is {value} ")
+  
   # does it fall within range, does it match the player
-  is_valid = value != None and value == player
+  matches_player = value == player
 
-  if not is_valid: 
+  if not matches_player: 
     return False
 
   #Vertical Check
@@ -78,10 +73,12 @@ def three_in_a_row(position, player, game_board, count=1):
   diagonal = three_in_a_row(position + 4, player, game_board, count + 1)
 
   # Backwards Diagnonal - if and only if the position is 3
-  if position == 3 and count == 1:
+  if position == 3:
     backward_diagonal = three_in_a_row(position + 2, player, game_board, count + 1)
+    if backward_diagonal == True:
+      return True
 
-  return vertical or horizontal or diagonal or backward_diagonal
+  return vertical or horizontal or diagonal
 
 def has_won(player, game_board):
   #iterating over, find the first value that has the player
@@ -91,7 +88,36 @@ def has_won(player, game_board):
         return True
   return False
 
-player_move(player1, game_board)
-player_move(player2, game_board)
-#check if either player one
-# check if there are still playable spaces using a set
+player1 = start_game()
+player2 = 'X' if player1 == 'O' else 'O'
+print(f'\nPlayer 1: {player1} ', f'Player 2: {player2}', '\n')
+winner = False
+
+taken_spaces = set()
+
+def game():
+  while not winner or len(taken_spaces) == len(game_board):
+    player_move(player1, game_board, taken_spaces)
+
+    if has_won(player1, game_board) == True:
+      print('Player 1 has won the game!')
+      display_board(game_board)
+      break
+    
+    player_move(player2, game_board, taken_spaces)
+
+    if has_won(player2, game_board) == True:
+      print('Player 2 has won the game!')
+      display_board(game_board)
+      break
+
+  if len(taken_spaces) == len(game_board):
+    print('Ladies and gentlemen...its a draw!')
+
+game()
+
+
+# board[1] == mark and board[2] == mark and board[3] == mark
+
+#better way
+# board[4] == board[5] == board[6] == mark
