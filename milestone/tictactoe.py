@@ -81,7 +81,7 @@ def three_in_a_row(position, player, game_board, count=1):
   if position == 3 and count == 1:
     backward_diagonal = three_in_a_row(position + 2, player, game_board, count + 1)
 
-  return vertical or horizontal or diagonal or vertical
+  return vertical or horizontal or diagonal or backward_diagonal
 
 def has_won(player, game_board):
   #iterating over, find the first value that has the player
