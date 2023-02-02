@@ -4,7 +4,6 @@ values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8,
          'Queen':10, 'King':10, 'Ace':11}
 
 import random
-
 suits
 ranks
 values
@@ -13,7 +12,6 @@ playing = True
 
 
 class Card:
-
   def __init__(self, suit, rank):
     self.suit = suit
     self.rank = rank
@@ -22,8 +20,7 @@ class Card:
     return f'{self.rank} of {self.suit}'
 
 
-class Deck:
-    
+class Deck:  
     def __init__(self):
         self.deck = []  # start with an empty list
         for suit in suits:
@@ -58,15 +55,29 @@ class Hand:
     self.cards.append(card)
     self.value += values[card.rank]
 
+    if card.rank == 'Ace':
+      self.aces += 1
+
+# if total value is greater than 21 and still have an ace
+# change ace to 1 instead of 11
   def adjust_for_ace(self):
-    pass
+    while self.value > 21 and self.aces:
+      self.value -=1
+      self.aces -= 1
+
+class Chip:
+  def __init__(self):
+    self.total = 100
+    self.bet = 0 
+
+  def win_bet(self):
+    self.total += self.bet
+
+  def lose_bet(self):
+    self.total -= self.bet
 
 test_deck = Deck()
 test_deck.shuffle()
-
-
 test_player = Hand()
-pulled_card = test_deck.deal()
-print(pulled_card)
-test_player.add_card(pulled_card)
+test_player.add_card(test_deck.deal())
 print(test_player.value)
