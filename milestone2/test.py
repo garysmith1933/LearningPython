@@ -144,3 +144,6 @@ def dealer_busts(player, dealer, chips):
 def player_wins(player, dealer, chips):
   print("Dealer wins!")
   chips.win_bet()
+
+def push():
+   print("Dealer and Player tie! It's a push.")
