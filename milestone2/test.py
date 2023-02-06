@@ -101,3 +101,18 @@ def take_bet(chips):
 def hit(deck, hand):
   hand.add_card(deck.deal())
   hand.adjust_for_ace()
+
+def hit_or_stand(deck, hand):
+  global playing
+
+  while True:
+    choice = input('Player, will you hit or stand? (h or s)')
+
+    if choice.lower() == 'x':
+      hit(deck,hand)
+
+    elif choice.lower() == 's':
+      playing = False
+
+    else:
+      print("Sorry please try again")
