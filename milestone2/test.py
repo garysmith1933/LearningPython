@@ -99,4 +99,5 @@ def take_bet(chips):
         break
 
 def hit(deck, hand):
-  pass
+  hand.add_card(deck.deal())
+  hand.adjust_for_ace()
