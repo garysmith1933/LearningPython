@@ -62,7 +62,7 @@ class Hand:
 # change ace to 1 instead of 11
   def adjust_for_ace(self):
     while self.value > 21 and self.aces:
-      self.value -=1
+      self.value -=10
       self.aces -= 1
 
 class Chip:
@@ -81,3 +81,22 @@ test_deck.shuffle()
 test_player = Hand()
 test_player.add_card(test_deck.deal())
 print(test_player.value)
+
+def take_bet(chips):
+
+  while True:
+    try:
+      chips.bet = int(input('Player, how much you would you like to bet'))
+    
+    except ValueError:
+      print('Sorry, your bet must be an integer')
+      
+    else:  
+      if(chips.bet > chips.total):
+        print(f'Your bet cannot exceed {chips.total}')
+
+      else:
+        break
+
+def hit(deck, hand):
+  pass
