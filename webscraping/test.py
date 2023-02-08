@@ -27,7 +27,6 @@ url = 'http://quotes.toscrape.com/page/'
 
 authors = set()
 
-
 for page in range(1,10):
   page_url = url+str(page)
   res = requests.get(page_url)
@@ -35,5 +34,5 @@ for page in range(1,10):
 
   for name in soup.select(".author"):
     authors.add(name.text)
-    
+
 print(authors)
