@@ -14,15 +14,12 @@ def get_activities():
     res = json.loads(requests.request("GET", url).text)
     activities = (*activities, res["activity"])
     idx += 1
-
-  print(activities)
+    
   return activities
 
 @app.route("/")
 def index():
-  activities = get_activities()
-  print(activities)
-  res1, res2, res3 = activities
+  res1, res2, res3 = get_activities()
   #renders the data to the html page, and variables that get passed down as props
   return render_template("index.html", activity1= res1, activity2=res2, activity3=res3)
 
