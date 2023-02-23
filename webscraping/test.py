@@ -11,7 +11,6 @@ for author in soup.select('.author'):
 
 print(authors)
 
-
 quotes_list = []
 quotes = soup.select('.text')
 
