@@ -8,8 +8,10 @@ def seed():
       cur.execute("DROP TABLE IF EXISTS question")
       cur.execute("CREATE TABLE question (id SERIAL PRIMARY KEY, title VARCHAR);")
 
-      # add questions here
-      cur.execute("INSERT INTO question (title) VALUES(%s)", ("What is my middle name?",))
+      questions = ['What is my middle name?', 'How old am i?', 'What year did I get married?', 'What is my favorite food?', 'What is my favorite anime?']
+
+      for question in questions:
+        cur.execute("INSERT INTO question (title) VALUES(%s)", (question,))
 
       cur.execute("SELECT * FROM question")
       print(cur.fetchall())
