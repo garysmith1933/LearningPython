@@ -9,9 +9,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/data")
 @cross_origin()
 def get_data():
-  return {"facts": ['today is cloudy', 'I love my wife', 'I am tired']}
+  return db.get_questions()
 
-db.seed()
 
 if __name__ == "__main__":
   app.run(debug=True, port=8080)

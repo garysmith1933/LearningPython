@@ -9,8 +9,8 @@ function App() {
     .then(res => res.json())
     .then(
       data => {
-        console.log(data.facts)
-        setFacts(data.facts)
+        console.log(data)
+        setFacts(data)
       }
     )
   },[])
@@ -18,15 +18,16 @@ function App() {
   const data = facts.length === 0 ?
       <p>Loading...</p> 
 :
-    facts.map((fact, i) => {
-    return <li key={i}> {fact} </li>
+    facts.map((fact) => {
+    const [idx, text] = fact
+    return <li key={idx}> {text} </li>
   })
 
 
   return (
     <div className="App">
-     <h1>Heres a few random facts</h1>
-
+     <h1>Think you know me?</h1>
+     <h4>Try out this quiz and see how you do!</h4>
      <ul>
       {data}
      </ul>
