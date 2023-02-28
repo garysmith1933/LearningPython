@@ -20,8 +20,20 @@ function App() {
 :
     questions.map((question) => {
     const [idx, title, option1, option2, option3, answer] = question
-    return <li key={idx}> {title} </li>
+    // return <li key={idx}> {title} </li>
+    return <div key={idx}>
+              <h3 className='question-title'>{title}</h3>
+              <div className='questions'>
+                <div className='options'>{option1}</div>
+                <div className='options'>{option2}</div>
+                <div className='options'>{option3}</div>
+                <div className='options'>{answer}</div>
+              </div>
+          </div>
+
+    
   })
+  
 
 
   return (
