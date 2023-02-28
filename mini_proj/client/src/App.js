@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [facts, setFacts] = useState([])
+  const [questions, setQuestions] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:8080/data")
@@ -10,17 +10,17 @@ function App() {
     .then(
       data => {
         console.log(data)
-        setFacts(data)
+        setQuestions(data)
       }
     )
   },[])
 
-  const data = facts.length === 0 ?
+  const data = questions.length === 0 ?
       <p>Loading...</p> 
 :
-    facts.map((fact) => {
-    const [idx, text] = fact
-    return <li key={idx}> {text} </li>
+    questions.map((question) => {
+    const [idx, title, option1, option2, option3, answer] = question
+    return <li key={idx}> {title} </li>
   })
 
 
