@@ -1,13 +1,15 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-const isCorrect = (choice, answer) => {
+const isCorrect = (element, choice, answer) => {
+  const el = document.getElementById(`${element}`)
+  console.log(choice, answer)
   if (choice === answer) {
-    console.log("correct")
+    el.classList.add("correct")
   }
 
   else {
-    console.log('WRONG')
+    el.classList.add("incorrect")
   }
 }
 
@@ -29,16 +31,16 @@ function App() {
       <p>Loading...</p> 
 :
     questions.map((question) => {
-    const [idx, title, option1, option2, option3, answer] = question
+    const answer = question[question.length-1]
+    const [idx, title, option1, option2, option3, option4] = question
     // return <li key={idx}> {title} </li>
     return <div key={idx} id='question-container'>
               <h3 className='question-title'>{title}</h3>
               <div className='questions'>
-                  <div className='options' onClick={() => isCorrect(option1, answer)}>{option1}</div>
-              
-                <div className='options'>{option2}</div>
-                <div className='options'>{option3}</div>
-                <div className='options'>{answer}</div>
+                <div className='options' id="option1" onClick={() => isCorrect("option1", option1, answer)}>{option1}</div>
+                <div className='options' id="option2" onClick={() => isCorrect("option2", option2, answer)}>{option2}</div>
+                <div className='options' id="option3" onClick={() => isCorrect("option3", option3, answer)}>{option3}</div>
+                <div className='options' id="option4" onClick={() => isCorrect("option4", option4, answer)}>{option4}</div>
               </div>
           </div>
   })

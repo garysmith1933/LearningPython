@@ -68,3 +68,12 @@ ul {
 .options:hover {
   border-color: green
 }
+
+.correct, .correct:hover {
+  border-color: green;
+}
+
+.incorrect, .incorrect:hover {
+  border-color: red
+}
+
