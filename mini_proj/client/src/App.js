@@ -22,6 +22,8 @@ function App() {
     const el = document.getElementById(`${element}`)
 
     if (choice === answer) {
+      if (el.classList.contains("correct")) return
+      
       el.classList.add("correct")
       setScore(score + 1)
     }
