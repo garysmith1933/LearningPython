@@ -23,9 +23,12 @@ function App() {
 
     if (choice === answer) {
       if (el.classList.contains("correct")) return
-      
+
       el.classList.add("correct")
-      setScore(score + 1)
+
+      if (answered === false) {
+        setScore(score + 1)
+      }
     }
   
     else {
