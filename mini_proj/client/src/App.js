@@ -1,22 +1,11 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-const isCorrect = (element, choice, answer) => {
-  const el = document.getElementById(`${element}`)
-  console.log(choice, answer)
-  if (choice === answer) {
-    el.classList.add("correct")
-  }
-
-  else {
-    el.classList.add("incorrect")
-  }
-}
-
 function App() {
   const [questions, setQuestions] = useState([])
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)
+  const [answered, setAnswered] = useState(false)
 
   useEffect(() => {
     fetch("http://localhost:8080/data")
@@ -29,7 +18,22 @@ function App() {
     )
   },[])
 
+  const isCorrect = (element, choice, answer) => {
+    const el = document.getElementById(`${element}`)
+    console.log(choice, answer)
+    if (choice === answer) {
+      el.classList.add("correct")
+    }
+  
+    else {
+      el.classList.add("incorrect")
+    }
+
+    setAnswered(true)
+  }
+
   const nextQuestion = () => {
+    if (answered === false) return;
     setCurrent(current + 1)
     const elements = document.getElementsByClassName('options')
     console.log(elements)
@@ -38,6 +42,8 @@ function App() {
       el.classList.remove("correct")
       el.classList.remove("incorrect")
     })
+
+    setAnswered(false)
   }
 
 
