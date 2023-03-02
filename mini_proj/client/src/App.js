@@ -20,9 +20,10 @@ function App() {
 
   const isCorrect = (element, choice, answer) => {
     const el = document.getElementById(`${element}`)
-    console.log(choice, answer)
+
     if (choice === answer) {
       el.classList.add("correct")
+      setScore(score + 1)
     }
   
     else {
@@ -34,7 +35,7 @@ function App() {
 
   const nextQuestion = () => {
     if (answered === false) return;
-    setCurrent(current + 1)
+
     const elements = document.getElementsByClassName('options')
     console.log(elements)
 
@@ -43,6 +44,7 @@ function App() {
       el.classList.remove("incorrect")
     })
 
+    setCurrent(current + 1)
     setAnswered(false)
   }
 
@@ -50,6 +52,7 @@ function App() {
   const data = questions.length === 0 ?
       <p>Loading...</p> 
 :
+  current < 5 ?
     <div id='question-container'>
         <div className='questions'>
           <div className='options' id="option1" onClick={() => isCorrect("option1", questions[current][2], questions[current][5])}>{questions[current][2]}</div>
@@ -57,19 +60,18 @@ function App() {
             <div className='options' id="option3" onClick={() => isCorrect("option3", questions[current][4], questions[current][5])}>{questions[current][4]}</div>
             <div className='options' id="option4" onClick={() => isCorrect("option4", questions[current][5], questions[current][5])}>{questions[current][5]}</div>
           </div>
+          <button onClick={() => nextQuestion()}> Next </button>
         </div>
+  : <p> Your final score is {score}/{questions.length}! Thanks for playing! </p>
   
   return (
     <div className="App">
      <h1>Think you know me?</h1>
      <h4>Try out this quiz and see how you do!</h4>
-     {current < 4 ?
       <ul>
-          {data}
-          {console.log(current)}
-          <button onClick={() => nextQuestion()}> Next </button>
-        </ul>
-        : 'game over' } 
+        {data}
+      </ul>
+       
     
     </div>
   );
