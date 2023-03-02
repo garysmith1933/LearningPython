@@ -16,6 +16,7 @@ const isCorrect = (element, choice, answer) => {
 function App() {
   const [questions, setQuestions] = useState([])
   const [current, setCurrent] = useState(0)
+  const [score, setScore] = useState(0)
 
   useEffect(() => {
     fetch("http://localhost:8080/data")
@@ -37,10 +38,6 @@ function App() {
       el.classList.remove("correct")
       el.classList.remove("incorrect")
     })
-    // for (element of elements) {
-    //   element.classList.remove("correct")
-    //   element.classList.remove("incorrect")
-    // }
   }
 
 
@@ -48,7 +45,6 @@ function App() {
       <p>Loading...</p> 
 :
     <div id='question-container'>
-      <h3 className='question-title'>{questions[current][1]}</h3>
         <div className='questions'>
           <div className='options' id="option1" onClick={() => isCorrect("option1", questions[current][2], questions[current][5])}>{questions[current][2]}</div>
             <div className='options' id="option2" onClick={() => isCorrect("option2", questions[current][3], questions[current][5])}>{questions[current][3]}</div>
@@ -61,10 +57,14 @@ function App() {
     <div className="App">
      <h1>Think you know me?</h1>
      <h4>Try out this quiz and see how you do!</h4>
-     <ul>
-      {data}
-      <button onClick={() => nextQuestion()}> Next </button>
-     </ul>
+     {current < 4 ?
+      <ul>
+          {data}
+          {console.log(current)}
+          <button onClick={() => nextQuestion()}> Next </button>
+        </ul>
+        : 'game over' } 
+    
     </div>
   );
 }
