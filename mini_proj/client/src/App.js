@@ -79,7 +79,7 @@ function App() {
             <div className='options' id="option3" onClick={() => isCorrect("option3", questions[current][4], questions[current][5])}>{questions[current][4]}</div>
             <div className='options' id="option4" onClick={() => isCorrect("option4", questions[current][5], questions[current][5])}>{questions[current][5]}</div>
           </div>
-          <button onClick={() => nextQuestion()}> Next </button>
+          <button id='next' onClick={() => nextQuestion()}> Next </button>
         </div>
   : <div>
       <p> {judgeScore(score)}</p>
