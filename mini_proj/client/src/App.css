@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -45,15 +49,20 @@ ul {
 }
 
 .questions {
+  padding: 2rem;
   margin: 10px auto;
   width:400px;
-  height:200px;
+  height:25vh;
   background-color:#fff;
   display:grid;
   grid-template-columns: 200px 200px;
   grid-row: auto auto;
-  grid-column-gap: 15px;
-  grid-row-gap: 1px;
+  column-gap: 30px;
+  row-gap: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 0;
 }
 
 .options {
@@ -78,8 +87,28 @@ ul {
   width: 100px;
   border-radius: 5px;
   background-color: white;
+  margin-bottom: 1rem;
 }
 
 #next:hover, .options:hover {
   border-color: royalblue;
+}
+
+#question-container {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+body {
+  background-color: #61dafb;
+}
+
+.header {
+  margin-bottom: 0;
 }

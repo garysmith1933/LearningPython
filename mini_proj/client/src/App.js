@@ -67,35 +67,34 @@ function App() {
     setAnswered(false)
   }
 
-
   const data = questions.length === 0 ?
       <p>Loading...</p> 
 :
   current < 5 ?
     <div id='question-container'>
+      <div className='header'>
+        <h1>Think you know me?</h1>
+        <h4>Try out this quiz and see how you do!</h4>
+      </div>
+
         <div className='questions'>
           <div className='options' id="option1" onClick={() => isCorrect("option1", questions[current][2], questions[current][5])}>{questions[current][2]}</div>
             <div className='options' id="option2" onClick={() => isCorrect("option2", questions[current][3], questions[current][5])}>{questions[current][3]}</div>
             <div className='options' id="option3" onClick={() => isCorrect("option3", questions[current][4], questions[current][5])}>{questions[current][4]}</div>
             <div className='options' id="option4" onClick={() => isCorrect("option4", questions[current][5], questions[current][5])}>{questions[current][5]}</div>
           </div>
+          
           <button id='next' onClick={() => nextQuestion()}> Next </button>
         </div>
-  : <div>
-      <p> {judgeScore(score)}</p>
+  : <div id='question-container'>
+      <p>{judgeScore(score)}</p>
       <p>Thanks for playing!</p>
     </div>
     
   
   return (
     <div className="App">
-     <h1>Think you know me?</h1>
-     <h4>Try out this quiz and see how you do!</h4>
-      <ul>
         {data}
-      </ul>
-       
-    
     </div>
   );
 }
