@@ -53,7 +53,6 @@ ul {
   margin: 10px auto;
   width:400px;
   height:25vh;
-  background-color:#fff;
   display:grid;
   grid-template-columns: 200px 200px;
   grid-row: auto auto;
@@ -75,23 +74,24 @@ ul {
 }
 
 .correct, .correct:hover {
-  border-color: green;
+  background-color: #39FF01;
 }
 
 .incorrect, .incorrect:hover {
-  border-color: red
+  background-color: red
 }
 
 #next {
   height: 50px;
   width: 100px;
   border-radius: 5px;
-  background-color: #61dafb;
   margin-bottom: 1rem;
+  background-color: white;
 }
 
 #next:hover, .options:hover {
   border-color: #61dafb;
+  cursor: pointer;
 }
 
 #question-container {
