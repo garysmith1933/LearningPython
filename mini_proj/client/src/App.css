@@ -67,7 +67,7 @@ ul {
 
 .options {
   height: 75px;
-  border: 3px solid black;
+  border: 3px solid #2b2d42;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,12 +86,12 @@ ul {
   height: 50px;
   width: 100px;
   border-radius: 5px;
-  background-color: white;
+  background-color: #61dafb;
   margin-bottom: 1rem;
 }
 
 #next:hover, .options:hover {
-  border-color: royalblue;
+  border-color: #61dafb;
 }
 
 #question-container {
@@ -106,7 +106,7 @@ ul {
 }
 
 body {
-  background-color: #61dafb;
+  background-color: #2b2d42;
 }
 
 .header {
