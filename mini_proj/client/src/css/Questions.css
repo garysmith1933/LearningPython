@@ -1,0 +1,23 @@
+.questions {
+    padding: 2rem;
+    margin: 10px auto;
+    width:400px;
+    height:25vh;
+    display:grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    column-gap: 30px;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 0;
+  }
+
+  .correct, .correct:hover {
+    background-color: #39FF01;
+  }
+  
+  .incorrect, .incorrect:hover {
+    background-color: red
+  }

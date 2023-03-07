@@ -1,4 +1,6 @@
-import './App.css';
+import './css/App.css';
+import './css/Questions.css'
+import './css/Mobile.css'
 import { useState, useEffect } from 'react';
 
 

@@ -1,0 +1,14 @@
+@media(max-width: 80em) {
+    #question-container {
+        height: 500px;
+        width: 60%;
+    }
+
+    .questions {
+        grid-template-columns: 150px 150px;
+        padding: 1rem;
+        column-gap: 15px;
+        row-gap: 15px;
+    }
+}
+
