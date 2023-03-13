@@ -3,6 +3,39 @@ import './css/Questions.css'
 import './css/Mobile.css'
 import { useState, useEffect } from 'react';
 
+const assignNumber = (set) => {
+  const random = Math.floor(Math.random() * set.size)
+  const res = Array.from(set)[random]
+  set.delete(res)
+  return res
+}
+
+
+const shuffleOptions = (currentQuestion) => {
+  console.log(currentQuestion)
+  const title = currentQuestion[1]
+  const answer = currentQuestion[currentQuestion.length-1]
+  const positons = new Set([2,3,4,5])
+
+  // have something to generate a number, and assign it to the option, and then delete the number from whatever we are keeping it in so it cant be reassigned to another option
+  const option1 = currentQuestion[assignNumber(positons)]
+  const option2 = currentQuestion[assignNumber(positons)]
+  const option3 = currentQuestion[assignNumber(positons)]
+  const option4 = currentQuestion[assignNumber(positons)]
+
+  // setQuestions([title, option1, option2, option3, option4, answer])
+
+  //the current question
+  //grab the options from the question
+
+  //shuffle it and return the options which then can be destructred from and displayed
+  // want to be able to keep track of the answer
+
+  //called each time we go to a new question
+  setQuestions([title, answer, option1, option2, option3, option4])
+}
+
+
 
 const judgeScore = (score) => {
   const scores = {
@@ -29,6 +62,7 @@ function App() {
     .then(
       data => {
         console.log(data)
+        shuffleOptions(data[0])
         setQuestions(data)
       }
     )
@@ -68,6 +102,9 @@ function App() {
     setCurrent(current + 1)
     setAnswered(false)
   }
+
+
+
 
   const data = questions.length === 0 ?
       <p>Loading...</p> 

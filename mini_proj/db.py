@@ -24,7 +24,7 @@ def get_questions():
   with conn.cursor() as cur: # closes cursor when completed
     cur.execute("SELECT * FROM question;")
     data = cur.fetchall()
-
+    
     random.shuffle(data)
     return data
     
