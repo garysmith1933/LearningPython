@@ -11,32 +11,6 @@ const assignNumber = (set) => {
 }
 
 
-const shuffleOptions = (currentQuestion) => {
-  console.log(currentQuestion)
-  const title = currentQuestion[1]
-  const answer = currentQuestion[currentQuestion.length-1]
-  const positons = new Set([2,3,4,5])
-
-  // have something to generate a number, and assign it to the option, and then delete the number from whatever we are keeping it in so it cant be reassigned to another option
-  const option1 = currentQuestion[assignNumber(positons)]
-  const option2 = currentQuestion[assignNumber(positons)]
-  const option3 = currentQuestion[assignNumber(positons)]
-  const option4 = currentQuestion[assignNumber(positons)]
-
-  // setQuestions([title, option1, option2, option3, option4, answer])
-
-  //the current question
-  //grab the options from the question
-
-  //shuffle it and return the options which then can be destructred from and displayed
-  // want to be able to keep track of the answer
-
-  //called each time we go to a new question
-  setQuestions([title, answer, option1, option2, option3, option4])
-}
-
-
-
 const judgeScore = (score) => {
   const scores = {
     0: '0/5...uhhh how did you get 0, there is literally 5 questions with 4 options each and somehow you guessed wrong EVERY SINGLE TIME!? HOWWWWW!?!?',
@@ -55,6 +29,33 @@ function App() {
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)
   const [answered, setAnswered] = useState(false)
+  const [questionDetails, setQuestionDetails] = useState([])
+
+
+  const shuffleOptions = (currentQuestion) => {
+    console.log(currentQuestion)
+    const title = currentQuestion[1]
+    const answer = currentQuestion[currentQuestion.length-1]
+    const positons = new Set([2,3,4,5])
+  
+    // have something to generate a number, and assign it to the option, and then delete the number from whatever we are keeping it in so it cant be reassigned to another option
+    const option1 = currentQuestion[assignNumber(positons)]
+    const option2 = currentQuestion[assignNumber(positons)]
+    const option3 = currentQuestion[assignNumber(positons)]
+    const option4 = currentQuestion[assignNumber(positons)]
+  
+    // setQuestions([title, option1, option2, option3, option4, answer])
+  
+    //the current question
+    //grab the options from the question
+  
+    //shuffle it and return the options which then can be destructred from and displayed
+    // want to be able to keep track of the answer
+  
+    //called each time we go to a new question
+    setQuestionDetails([title, answer, option1, option2, option3, option4])
+  }
+
 
   useEffect(() => {
     fetch("http://localhost:8080/data")
@@ -100,10 +101,9 @@ function App() {
     })
 
     setCurrent(current + 1)
+    shuffleOptions(questions[current])
     setAnswered(false)
   }
-
-
 
 
   const data = questions.length === 0 ?
@@ -117,10 +117,10 @@ function App() {
       </div>
 
         <div className='questions'>
-          <div className='options' id="option1" onClick={() => isCorrect("option1", questions[current][2], questions[current][5])}>{questions[current][2]}</div>
-            <div className='options' id="option2" onClick={() => isCorrect("option2", questions[current][3], questions[current][5])}>{questions[current][3]}</div>
-            <div className='options' id="option3" onClick={() => isCorrect("option3", questions[current][4], questions[current][5])}>{questions[current][4]}</div>
-            <div className='options' id="option4" onClick={() => isCorrect("option4", questions[current][5], questions[current][5])}>{questions[current][5]}</div>
+          <div className='options' id="option1" onClick={() => isCorrect("option1", questionDetails[2], questions[1])}>{questionDetails[2]}</div>
+            <div className='options' id="option2" onClick={() => isCorrect("option2", questionDetails[3], questions[1])}>{questionDetails[3]}</div>
+            <div className='options' id="option3" onClick={() => isCorrect("option3", questionDetails[4], questions[1])}>{questionDetails[4]}</div>
+            <div className='options' id="option4" onClick={() => isCorrect("option4", questionDetails[5], questions[1])}>{questionDetails[5]}</div>
           </div>
           
           <button id='next' onClick={() => nextQuestion()}> Next </button>
