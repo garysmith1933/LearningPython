@@ -117,10 +117,10 @@ function App() {
       </div>
 
         <div className='questions'>
-          <div className='options' id="option1" onClick={() => isCorrect("option1", questionDetails[2], questions[1])}>{questionDetails[2]}</div>
-            <div className='options' id="option2" onClick={() => isCorrect("option2", questionDetails[3], questions[1])}>{questionDetails[3]}</div>
-            <div className='options' id="option3" onClick={() => isCorrect("option3", questionDetails[4], questions[1])}>{questionDetails[4]}</div>
-            <div className='options' id="option4" onClick={() => isCorrect("option4", questionDetails[5], questions[1])}>{questionDetails[5]}</div>
+          <div className='options' id="option1" onClick={() => isCorrect("option1", questionDetails[2], questionDetails[1])}>{questionDetails[2]}</div>
+            <div className='options' id="option2" onClick={() => isCorrect("option2", questionDetails[3], questionDetails[1])}>{questionDetails[3]}</div>
+            <div className='options' id="option3" onClick={() => isCorrect("option3", questionDetails[4], questionDetails[1])}>{questionDetails[4]}</div>
+            <div className='options' id="option4" onClick={() => isCorrect("option4", questionDetails[5], questionDetails[1])}>{questionDetails[5]}</div>
           </div>
           
           <button id='next' onClick={() => nextQuestion()}> Next </button>
