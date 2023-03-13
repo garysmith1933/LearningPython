@@ -1,5 +1,4 @@
 import psycopg2
-import random
 conn = psycopg2.connect(dbname='trivia', password='root', user='postgres')
 
 def seed():
@@ -22,10 +21,8 @@ def seed():
 
 def get_questions():
   with conn.cursor() as cur: # closes cursor when completed
-    cur.execute("SELECT * FROM question;")
+    cur.execute("SELECT * FROM question ORDER BY RANDOM();")
     data = cur.fetchall()
-    
-    random.shuffle(data)
     return data
     
 seed()

@@ -26,7 +26,7 @@ const judgeScore = (score) => {
 
 function App() {
   const [questions, setQuestions] = useState([])
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(null)
   const [score, setScore] = useState(0)
   const [answered, setAnswered] = useState(false)
   const [questionDetails, setQuestionDetails] = useState([])
@@ -38,23 +38,19 @@ function App() {
     const answer = currentQuestion[currentQuestion.length-1]
     const positons = new Set([2,3,4,5])
   
-    // have something to generate a number, and assign it to the option, and then delete the number from whatever we are keeping it in so it cant be reassigned to another option
     const option1 = currentQuestion[assignNumber(positons)]
     const option2 = currentQuestion[assignNumber(positons)]
     const option3 = currentQuestion[assignNumber(positons)]
     const option4 = currentQuestion[assignNumber(positons)]
-  
-    // setQuestions([title, option1, option2, option3, option4, answer])
-  
-    //the current question
-    //grab the options from the question
-  
-    //shuffle it and return the options which then can be destructred from and displayed
-    // want to be able to keep track of the answer
-  
-    //called each time we go to a new question
+
     setQuestionDetails([title, answer, option1, option2, option3, option4])
   }
+
+  useEffect(() => {
+    if (questions.length && current < 5) {
+      shuffleOptions(questions[current])
+    }
+  },[current])
 
 
   useEffect(() => {
@@ -93,7 +89,6 @@ function App() {
     if (answered === false) return;
 
     const elements = document.getElementsByClassName('options')
-    console.log(elements)
 
     Array.from(elements).forEach(el => {
       el.classList.remove("correct")
@@ -101,10 +96,8 @@ function App() {
     })
 
     setCurrent(current + 1)
-    shuffleOptions(questions[current])
     setAnswered(false)
   }
-
 
   const data = questions.length === 0 ?
       <p>Loading...</p> 
