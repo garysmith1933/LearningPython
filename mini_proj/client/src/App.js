@@ -105,11 +105,11 @@ function App() {
   current < 5 ?
     <div id='question-container'>
       <div className='header'>
-        <h1>Think you know me?</h1>
+        <h1>Think you know <span>me</span>?</h1>
         <p>Try out this quiz and see how you do!</p>
       </div>
 
-      <h3 className='title'> Current question: {questionDetails[0]} </h3>
+      <h3 className='title'> Current <span>question</span>: {questionDetails[0]} </h3>
 
         <div className='questions'>
           <div className='options' id="option1" onClick={() => isCorrect("option1", questionDetails[2], questionDetails[1])}>{questionDetails[2]}</div>
@@ -118,7 +118,7 @@ function App() {
             <div className='options' id="option4" onClick={() => isCorrect("option4", questionDetails[5], questionDetails[1])}>{questionDetails[5]}</div>
           </div>
           
-          <button id='next' onClick={() => nextQuestion()}> Next </button>
+          <button id='next' onClick={() => nextQuestion()}>Next</button>
         </div>
   : <div id='question-container'>
       <p>{judgeScore(score)}</p>
