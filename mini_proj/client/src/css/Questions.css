@@ -1,5 +1,5 @@
 .questions {
-    padding: 2rem;
+    padding: 1rem;
     margin: 10px auto;
     width:400px;
     height:25vh;
@@ -12,12 +12,25 @@
     align-items: center;
     border-radius: 10px;
     margin-top: 0;
+    font-weight: bold;
+  }
+
+  .title {
+    margin-top: 1rem;
+    margin-bottom: 0
+  }
+
+  p {
+    font-size: 1.0rem;
+    font-weight: 500;
   }
 
   .correct, .correct:hover {
-    background-color: #39FF01;
+    background-color: green;
+    color: white
   }
   
   .incorrect, .incorrect:hover {
     background-color: red
   }
+
