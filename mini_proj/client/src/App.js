@@ -105,11 +105,11 @@ function App() {
   current < 5 ?
     <div id='question-container'>
       <div className='header'>
-        <h1>Think you know <span>me</span>?</h1>
+        <h1>Think you know <span>Me</span>?</h1>
         <p>Try out this quiz and see how you do!</p>
       </div>
 
-      <h3 className='title'> Current <span>question</span>: {questionDetails[0]} </h3>
+      <h3 className='title'> Current <span>Question</span>: {questionDetails[0]} </h3>
 
         <div className='questions'>
           <div className='options' id="option1" onClick={() => isCorrect("option1", questionDetails[2], questionDetails[1])}>{questionDetails[2]}</div>
